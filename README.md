@@ -2,7 +2,6 @@
 [![Windows build status][win-build-image]][win-build-url]
 [![Tests coverage][cov-image]][cov-url]
 ![Transpilation status][transpilation-image]
-[![npm version][npm-image]][npm-url]
 
 # stream-promise
 
@@ -41,10 +40,9 @@ npm test
 
 [nix-build-image]: https://semaphoreci.com/api/v1/medikoo-org/stream-promise/branches/master/shields_badge.svg
 [nix-build-url]: https://semaphoreci.com/medikoo-org/stream-promise
-[win-build-image]: https://ci.appveyor.com/api/projects/status/?svg=true
+[win-build-image]: https://ci.appveyor.com/api/projects/status/2ihsys269r29l2ol?svg=true
 [win-build-url]: https://ci.appveyor.com/api/project/medikoo/stream-promise
 [cov-image]: https://img.shields.io/codecov/c/github/medikoo/stream-promise.svg
 [cov-url]: https://codecov.io/gh/medikoo/stream-promise
 [transpilation-image]: https://img.shields.io/badge/transpilation-free-brightgreen.svg
 [npm-image]: https://img.shields.io/npm/v/stream-promise.svg
-[npm-url]: https://www.npmjs.com/package/stream-promise
