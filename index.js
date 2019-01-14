@@ -9,7 +9,7 @@ class StreamEmitter extends Promise {
 	}
 }
 
-Object.assign(StreamEmitter.prototype, Object.getPrototypeOf(Stream.prototype)); // EventEmitter
-Object.assign(StreamEmitter.prototype, Stream.prototype);
+const EventEmitterPrototype = Object.getPrototypeOf(Stream.prototype);
+Object.assign(StreamEmitter.prototype, EventEmitterPrototype, Stream.prototype);
 
 module.exports = StreamEmitter;
