@@ -12,13 +12,13 @@ Useful when we want to serve both a [`Stream`](https://nodejs.org/api/stream.htm
 ### Installation
 
 ```bash
-npm install stream-promise-2
+npm install stream-promise
 ```
 
 # Usage
 
 ```javascript
-const StreamPromise = require("stream-promise-2");
+const StreamPromise = require("stream-promise");
 
 const streamPromise = new StreamPromise((resolve, reject) => {
 	...

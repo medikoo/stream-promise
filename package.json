@@ -1,6 +1,6 @@
 {
-  "name": "stream-promise-2",
-  "version": "1.0.0",
+  "name": "stream-promise",
+  "version": "2.0.0",
   "description": "Promise that shares Node.js Stream interface",
   "author": "Mariusz Nowak <medyk@medikoo.com> (http://www.medikoo.com/)",
   "keywords": [
