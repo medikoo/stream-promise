@@ -38,7 +38,7 @@ describe("toPromise", () => {
 					else this.push(null);
 				}
 			});
-			return toPromise(stream).then(result => { assert.equal(result, 10); });
+			return toPromise(stream).then(result => { assert.equal(result, "10"); });
 		});
 		it("Object streams should resolve with an array", () => {
 			let counter = 2;
