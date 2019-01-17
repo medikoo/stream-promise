@@ -6,9 +6,9 @@
 
 # stream-promise
 
-## Promise that's a also a Node.js [Stream](https://nodejs.org/api/stream.html#stream_stream)
+## Convert any [Stream](https://nodejs.org/api/stream.html#stream_stream) instance to thenable
 
-Useful when we want to serve both a [`Stream`](https://nodejs.org/api/stream.html#stream_stream) instance and a `Promise` instance as one object
+So it can be consumed both as a promise and as a stream
 
 ### Installation
 
@@ -18,19 +18,40 @@ npm install stream-promise
 
 # Usage
 
+Stream must be either readable or writable.
+
+In case of readable stream promise resolves with concatenated output, in case of writable streams resolves simply with `null`.
+
+To achieve expected result stream should to be converted immediately after initialization.
+
 ```javascript
-const StreamPromise = require("stream-promise");
+const streamPromise = require("stream-promise");
 
-const streamPromise = new StreamPromise((resolve, reject) => {
-	...
+streamPromise(someReadableStream);
+
+someReadableStream.then(result => {
+	console.log("Concatenated stream output", result);
 });
 
-streamPromise.addListener("someevent", event => {
-	...
-});
-streamPromise.emit("someevent", { ... });
+streamPromise(someWritabletream);
 
-stream.pipe(otherStream);
+someReadableStream.then(result => {
+	console.log("Cumulated stream output", result);
+});
+```
+
+## Non-destructive way
+
+Sepearate promise (without touching stream object) can be created with `to-promise` util:
+
+```javascript
+const streamToPromise = require("stream-promise/to-promise");
+
+const someReadableStreamPromise = streamPromiseTo(someReadableStream);
+
+someReadableStreamPromise.then(result => {
+	console.log("Concatenated stream output", result);
+});
 ```
 
 ### Tests

@@ -1,15 +1,6 @@
 "use strict";
 
-const Stream = require("stream");
+const toThenable = require("2-thenable")
+    , toPromise  = require("./to-promise");
 
-class StreamEmitter extends Promise {
-	constructor(executor) {
-		super(executor);
-		Stream.call(this);
-	}
-}
-
-const EventEmitterPrototype = Object.getPrototypeOf(Stream.prototype);
-Object.assign(StreamEmitter.prototype, EventEmitterPrototype, Stream.prototype);
-
-module.exports = StreamEmitter;
+module.exports = stream => toThenable(stream, toPromise(stream));

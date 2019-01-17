@@ -1,28 +1,16 @@
 "use strict";
 
-const { assert }    = require("chai")
-    , Stream        = require("stream")
-    , StreamEmitter = require("../");
+const isThenable    = require("es5-ext/object/is-thenable")
+    , { assert }    = require("chai")
+    , { Readable }  = require("stream")
+    , streamPromise = require("../");
 
 describe("(main)", () => {
-	it(
-		"Should create promise",
-		() =>
-			new StreamEmitter(resolve => resolve("foo").then(result => assert.equal(result, "foo")))
-	);
-	it("Should create an emitter", () => {
-		const streamEmitter = new StreamEmitter(resolve => resolve("result"));
-		let eventData;
-		streamEmitter.addListener("elo", event => { eventData = event; });
-		return streamEmitter.then(result => {
-			assert.equal(result, "result");
-			streamEmitter.emit("elo", "bar");
-			assert.equal(eventData, "bar");
-		});
-	});
-	it("Should create a stream", () => {
-		const streamEmitter = new StreamEmitter(resolve => resolve("result"));
-
-		assert.equal(streamEmitter.pipe, Stream.prototype.pipe);
+	it("Should convert stream to promise", () => {
+		const stream = Object.assign(new Readable(), { _read() { this.push(null); } });
+		const result = streamPromise(stream);
+		assert.equal(isThenable(result), true);
+		assert.equal(result, stream);
+		return result;
 	});
 });

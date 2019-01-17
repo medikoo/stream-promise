@@ -10,6 +10,11 @@
     "event-emitter"
   ],
   "repository": "medikoo/stream-promise",
+  "dependencies": {
+    "2-thenable": "1",
+    "es5-ext": "^0.10.47",
+    "is-stream": "^1.1"
+  },
   "devDependencies": {
     "chai": "^4.2",
     "eslint": "^5.12",
