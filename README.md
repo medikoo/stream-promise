@@ -68,3 +68,4 @@ npm test
 [cov-url]: https://codecov.io/gh/medikoo/stream-promise
 [transpilation-image]: https://img.shields.io/badge/transpilation-free-brightgreen.svg
 [npm-image]: https://img.shields.io/npm/v/stream-promise.svg
+[npm-url]: https://www.npmjs.com/package/stream-promise
