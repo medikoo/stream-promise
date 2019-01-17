@@ -20,7 +20,7 @@ npm install stream-promise
 
 Stream must be either readable or writable.
 
-In case of readable streams, promise resolves with concatenated output, in case of writable streams resolves simply with `null`.
+In case of readable streams, promise resolves with concatenated output, in case of writable streams resolve with `undefined`
 
 To achieve expected result stream should be converted immediately after initialization.
 

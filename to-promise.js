@@ -39,7 +39,7 @@ module.exports = stream => {
 			}
 			stream.on("end", () => resolve(result));
 		} else {
-			stream.on("finish", () => resolve(result));
+			stream.on("finish", () => resolve());
 		}
 	});
 };

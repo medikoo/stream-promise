@@ -69,7 +69,7 @@ describe("toPromise", () => {
 			stream.write("foo");
 			stream.write("bar");
 			stream.end();
-			return result.then(result => assert.equal(result, null));
+			return result.then(result => assert.equal(result, undefined));
 		});
 	});
 });
