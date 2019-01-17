@@ -50,6 +50,17 @@ describe("toPromise", () => {
 			});
 			return toPromise(stream).then(result => { assert.deepEqual(result, [1, 0]); });
 		});
+		it("Should expose already emitted data", () => {
+			let counter = 2;
+			const stream = Object.assign(new Readable({ encoding: "utf8" }), {
+				_read() {
+					if (counter--) this.push(String(counter));
+					else this.push(null);
+				}
+			});
+			const promise = toPromise(stream);
+			return promise.then(() => { assert.equal(promise.emittedData, "10"); });
+		});
 	});
 	describe("Writable streams", () => {
 		it("Should return a promise", () => {

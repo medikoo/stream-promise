@@ -40,6 +40,8 @@ someReadableStream.then(result => {
 });
 ```
 
+Already emitted data is accessible at `emittedData` property
+
 ## Non-destructive way
 
 Sepearate promise (without touching stream object) can be created with `to-promise` util:

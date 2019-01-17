@@ -13,4 +13,11 @@ describe("(main)", () => {
 		assert.equal(result, stream);
 		return result;
 	});
+	it("Should expose emitted data", () => {
+		let counter = 2;
+		const stream = Object.assign(new Readable({ encoding: "utf8" }), {
+			_read() { this.push(counter-- ? String(counter) : null); }
+		});
+		return streamPromise(stream).then(() => { assert.equal(stream.emittedData, "10"); });
+	});
 });

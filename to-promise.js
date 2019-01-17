@@ -10,10 +10,10 @@ module.exports = stream => {
 			`${ toShortString(stream) } stream is recognized neither as readable nor writeable`
 		);
 	}
-	return new Promise((resolve, reject) => {
+	let result = null;
+	const promise = new Promise((resolve, reject) => {
 		stream.on("error", reject);
 
-		let result = null;
 		if (isStream.readable(stream)) {
 			if (stream._readableState.objectMode) {
 				result = [];
@@ -22,18 +22,18 @@ module.exports = stream => {
 				stream.on("data", data => {
 					if (typeof data === "string") {
 						if (!result) {
-							result = data;
+							promise.emittedData = result = data;
 						} else if (Buffer.isBuffer(data)) {
-							result = Buffer.concat([data, Buffer.from(data)]);
+							promise.emittedData = result = Buffer.concat([data, Buffer.from(data)]);
 						} else {
-							result += data;
+							promise.emittedData = result += data;
 						}
 					} else if (!result) {
-						result = data;
+						promise.emittedData = result = data;
 					} else if (Buffer.isBuffer(result)) {
-						result = Buffer.concat([result, data]);
+						promise.emittedData = result = Buffer.concat([result, data]);
 					} else {
-						result = Buffer.concat([Buffer.from(result), data]);
+						promise.emittedData = result = Buffer.concat([Buffer.from(result), data]);
 					}
 				});
 			}
@@ -42,4 +42,6 @@ module.exports = stream => {
 			stream.on("finish", () => resolve());
 		}
 	});
+	if (isStream.readable) promise.emittedData = result;
+	return promise;
 };
