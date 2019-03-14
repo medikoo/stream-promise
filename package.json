@@ -11,16 +11,16 @@
   ],
   "repository": "medikoo/stream-promise",
   "dependencies": {
-    "2-thenable": "1",
-    "es5-ext": "^0.10.47",
-    "is-stream": "^1.1"
+    "2-thenable": "^1.0.0",
+    "es5-ext": "^0.10.49",
+    "is-stream": "^1.1.0"
   },
   "devDependencies": {
-    "chai": "^4.2",
-    "eslint": "^5.12",
-    "eslint-config-medikoo": "^2",
-    "mocha": "^5.2",
-    "nyc": "^13.1"
+    "chai": "^4.2.0",
+    "eslint": "^5.15.1",
+    "eslint-config-medikoo": "^2.1.1",
+    "mocha": "^5.2.0",
+    "nyc": "^13.3.0"
   },
   "eslintConfig": {
     "extends": "medikoo",
