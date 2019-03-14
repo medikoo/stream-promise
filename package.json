@@ -20,7 +20,8 @@
 		"eslint": "^5.15.1",
 		"eslint-config-medikoo": "^2.1.1",
 		"mocha": "^6.0.2",
-		"nyc": "^13.3.0"
+		"nyc": "^13.3.0",
+		"prettier-elastic": "^1.16.4"
 	},
 	"eslintConfig": {
 		"extends": "medikoo",
@@ -41,6 +42,7 @@
 		"coverage": "nyc --reporter=lcov --reporter=html --reporter=text-summary npm test",
 		"check-coverage": "npm run coverage && nyc check-coverage --statements 80 --function 80 --branches 50 --lines 80",
 		"lint": "eslint --ignore-path=.gitignore .",
+		"prettify": "prettier --write --ignore-path .gitignore '**/*.{css,html,js,json,md,yaml,yml}'",
 		"test": "mocha"
 	},
 	"license": "ISC"
