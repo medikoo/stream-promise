@@ -19,7 +19,7 @@
     "chai": "^4.2.0",
     "eslint": "^5.15.1",
     "eslint-config-medikoo": "^2.1.1",
-    "mocha": "^5.2.0",
+    "mocha": "^6.0.2",
     "nyc": "^13.3.0"
   },
   "eslintConfig": {
