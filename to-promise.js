@@ -1,9 +1,11 @@
 "use strict";
 
-const toShortString = require("es5-ext/to-short-string-representation")
+const isObject      = require("es5-ext/object/is-object")
+    , toShortString = require("es5-ext/to-short-string-representation")
     , isStream      = require("is-stream");
 
-module.exports = stream => {
+module.exports = (stream, options = {}) => {
+	if (!isObject(options)) options = {};
 	if (!isStream(stream)) throw new TypeError(`${ toShortString(stream) } is not a stream`);
 	if (!isStream.readable(stream) && !isStream.writable(stream)) {
 		throw new TypeError(
@@ -15,7 +17,9 @@ module.exports = stream => {
 		stream.on("error", reject);
 
 		if (isStream.readable(stream)) {
-			if (stream._readableState.objectMode) {
+			if (options.noCollect) {
+				result = undefined;
+			} else if (stream._readableState.objectMode) {
 				result = [];
 				stream.on("data", data => result.push(data));
 			} else {
@@ -42,6 +46,6 @@ module.exports = stream => {
 			stream.on("finish", () => resolve());
 		}
 	});
-	if (isStream.readable) promise.emittedData = result;
+	if (isStream.readable && !options.noCollect) promise.emittedData = result;
 	return promise;
 };

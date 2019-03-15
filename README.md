@@ -29,15 +29,11 @@ const streamPromise = require("stream-promise");
 
 streamPromise(someReadableStream);
 
-someReadableStream.then(result => {
-	console.log("Concatenated stream output", result);
-});
+someReadableStream.then(result => { console.log("Concatenated stream output", result); });
 
 streamPromise(someWritabletream);
 
-someReadableStream.then(result => {
-	console.log("Cumulated stream output", result);
-});
+someReadableStream.then(result => { console.log("Cumulated stream output", result); });
 ```
 
 Already emitted data is accessible at `emittedData` property
@@ -51,10 +47,16 @@ const streamToPromise = require("stream-promise/to-promise");
 
 const someReadableStreamPromise = streamPromiseTo(someReadableStream);
 
-someReadableStreamPromise.then(result => {
-	console.log("Concatenated stream output", result);
-});
+someReadableStreamPromise.then(result => { console.log("Concatenated stream output", result); });
 ```
+
+## Supported options
+
+### noCollect `boolean` (default: `false`)
+
+Applicable to _readable_ streams. Set to true, if it's not intended to gather stream result and resolve with it.
+
+Then the only purpose of promise would be to indicate a moment when data stream is finalized
 
 ### Tests
 
