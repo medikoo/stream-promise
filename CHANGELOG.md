@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [3.2.0](https://github.com/medikoo/stream-promise/compare/v3.1.0...v3.2.0) (2019-03-15)
+
+### Features
+
+-   `noCollect` option ([8adbdf8](https://github.com/medikoo/stream-promise/commit/8adbdf8))
+
 <a name="3.1.0"></a>
 
 # [3.1.0](https://github.com/medikoo/stream-promise/compare/v3.0.0...v3.1.0) (2019-01-17)
