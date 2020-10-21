@@ -29,11 +29,11 @@ const streamPromise = require("stream-promise");
 
 streamPromise(someReadableStream);
 
-someReadableStream.then(result => { console.log("Concatenated stream output", result); });
+someReadableStream.then(result => { console.log("All data read, stream output:", result); });
 
 streamPromise(someWritabletream);
 
-someReadableStream.then(result => { console.log("Cumulated stream output", result); });
+someWritableStream.then(() => { console.log("All data written"); });
 ```
 
 Already emitted data is accessible at `emittedData` property
