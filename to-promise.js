@@ -27,8 +27,10 @@ module.exports = (stream, options = {}) => {
 					if (typeof data === "string") {
 						if (!result) {
 							promise.emittedData = result = data;
-						} else if (Buffer.isBuffer(data)) {
-							promise.emittedData = result = Buffer.concat([data, Buffer.from(data)]);
+						} else if (Buffer.isBuffer(result)) {
+							promise.emittedData = result = Buffer.concat([
+								result, Buffer.from(data)
+							]);
 						} else {
 							promise.emittedData = result += data;
 						}
